@@ -61,7 +61,7 @@
         img.alt = d.title || '';
         img.loading = 'lazy';
         img.src = d.thumbnail_url;
-        el.appendChild(img);
+        el.insertBefore(img, el.firstChild);
         var ph = el.querySelector('.placeholder');
         if (ph) ph.remove();
       })
