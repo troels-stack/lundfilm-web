@@ -177,12 +177,16 @@ h2.title { margin: 0; font-weight: 800; font-stretch: 112%; font-size: clamp(40p
 .socials { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
 .fine { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-family: var(--mono); font-size: 12px; color: var(--dim); }
 
-/* Video modal */
-.modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(12,12,13,.94); }
+/* Media viewer (video + photos) — solid black so nothing shows through */
+.modal { position: fixed; inset: 0; z-index: 50; display: none; flex-direction: column; gap: 14px; align-items: center; justify-content: center; padding: max(24px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: #000; }
 .modal.open { display: flex; }
-.modal-frame { position: relative; width: min(1280px, 100%); aspect-ratio: 16 / 9; background: #000; border-radius: 12px; overflow: hidden; }
+.modal-frame { position: relative; width: min(1280px, 100%); aspect-ratio: 16 / 9; max-height: calc(100vh - 140px); background: #000; overflow: hidden; }
 .modal-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.modal-close { position: absolute; top: 16px; right: 16px; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line-2); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.modal-frame.photo { aspect-ratio: auto; width: auto; max-width: 100%; display: flex; align-items: center; justify-content: center; }
+.modal-frame.photo img { max-width: min(1600px, 100%); max-height: calc(100vh - 140px); width: auto; height: auto; object-fit: contain; }
+.modal-caption { margin: 0; min-height: 1em; font-family: var(--mono); font-size: 12px; color: rgba(243,241,236,.72); text-align: center; }
+.modal-caption:empty { display: none; }
+.modal-close { position: absolute; z-index: 2; top: max(16px, env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line-2); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
 /* Mobile */
 @media (max-width: 900px) {

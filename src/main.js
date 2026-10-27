@@ -73,26 +73,51 @@
   var frame = modal && modal.querySelector('.modal-frame');
   var closeBtn = modal && modal.querySelector('.modal-close');
   var lastFocus = null;
-  function openVideo(id, title) {
-    if (!modal) return;
+  var caption = modal && modal.querySelector('.modal-caption');
+  function openModal() {
     lastFocus = document.activeElement;
-    frame.innerHTML = '<iframe src="https://player.vimeo.com/video/' + encodeURIComponent(id) + '?autoplay=1&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="' + (title || 'Video').replace(/"/g, '&quot;') + '"></iframe>';
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
     closeBtn.focus();
+  }
+  function openVideo(id, title) {
+    if (!modal) return;
+    frame.classList.remove('photo');
+    if (caption) caption.textContent = '';
+    frame.innerHTML = '<iframe src="https://player.vimeo.com/video/' + encodeURIComponent(id) + '?autoplay=1&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="' + (title || 'Video').replace(/"/g, '&quot;') + '"></iframe>';
+    openModal();
+  }
+  function openPhoto(src, text, alt) {
+    if (!modal) return;
+    frame.classList.add('photo');
+    frame.innerHTML = '';
+    var im = new Image();
+    im.src = src;
+    im.alt = alt || '';
+    frame.appendChild(im);
+    if (caption) caption.textContent = text || '';
+    openModal();
   }
   function closeVideo() {
     if (!modal) return;
     modal.classList.remove('open');
     frame.innerHTML = '';
+    frame.classList.remove('photo');
+    if (caption) caption.textContent = '';
     document.body.style.overflow = '';
     if (lastFocus) lastFocus.focus();
   }
   Array.prototype.slice.call(document.querySelectorAll('[data-vimeo]')).forEach(function (b) {
     b.addEventListener('click', function () { openVideo(b.getAttribute('data-vimeo'), b.getAttribute('aria-label')); });
   });
+  Array.prototype.slice.call(document.querySelectorAll('[data-photo]')).forEach(function (b) {
+    b.addEventListener('click', function () {
+      var pic = b.parentNode.querySelector('img');
+      openPhoto(b.getAttribute('data-photo'), b.getAttribute('data-caption'), pic ? pic.alt : '');
+    });
+  });
   if (closeBtn) closeBtn.addEventListener('click', closeVideo);
-  if (modal) modal.addEventListener('click', function (e) { if (e.target === modal) closeVideo(); });
+  if (modal) modal.addEventListener('click', function (e) { if (e.target === modal || e.target === frame) closeVideo(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal && modal.classList.contains('open')) closeVideo(); });
 
   // E-mail: assembled in the browser so simple harvesters never see it in the HTML

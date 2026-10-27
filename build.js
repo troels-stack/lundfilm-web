@@ -37,8 +37,14 @@ function videoLayer(item) {
   return `<button class="vimeo-trigger" type="button" data-vimeo="${esc(item.vimeo)}" aria-label="Play: ${esc(item.title)}"></button><span class="play" aria-hidden="true">${PLAY}</span>`;
 }
 
+function photoLayer(item) {
+  if (!item.image || item.vimeo) return '';
+  const cap = item.title + (item.credit ? ' · Foto: ' + item.credit : '');
+  return `<button class="vimeo-trigger" type="button" data-photo="${img(item.image)}" data-caption="${esc(cap)}" aria-label="Open photo: ${esc(item.title)}"></button>`;
+}
+
 function latestCard(n) {
-  const m = media(n).replace(/<\/div>$/, videoLayer(n) + '</div>');
+  const m = media(n).replace(/<\/div>$/, videoLayer(n) + photoLayer(n) + '</div>');
   return `<article class="card">${m}<div class="card-body"><span class="card-date">${esc(n.label)}</span><h3>${esc(n.title)}</h3><p>${esc(n.text)}</p></div></article>`;
 }
 
@@ -52,7 +58,7 @@ function workCard(w) {
     inner = `<span class="placeholder">${esc(w.title)}</span>`;
   }
   const thumbAttr = !w.image && w.vimeo ? ` data-vimeo-thumb="${esc(w.vimeo)}"` : '';
-  return `<article class="work"><div class="media"${thumbAttr}>${inner}${videoLayer(w)}</div><div class="work-title"><h3>${esc(w.title)}</h3>${w.year ? `<span>${esc(w.year)}</span>` : ''}</div><p class="work-role">${esc(w.role)}</p></article>`;
+  return `<article class="work"><div class="media"${thumbAttr}>${inner}${videoLayer(w)}${photoLayer(w)}</div><div class="work-title"><h3>${esc(w.title)}</h3>${w.year ? `<span>${esc(w.year)}</span>` : ''}</div><p class="work-role">${esc(w.role)}</p></article>`;
 }
 
 // --- From the road: photos + news that has dropped out of "Latest", newest first.
@@ -66,7 +72,7 @@ function tile(r) {
   let pic = '';
   if (r.image) pic = `<img src="${img(r.image)}" alt="${esc(r.alt)}" loading="lazy">`;
   const thumb = !r.image && r.vimeo ? ` data-vimeo-thumb="${esc(r.vimeo)}"` : '';
-  const vid = r.vimeo ? `<button class="vimeo-trigger" type="button" data-vimeo="${esc(r.vimeo)}" aria-label="Play: ${esc(r.title)}"></button>` : '';
+  const vid = r.vimeo ? `<button class="vimeo-trigger" type="button" data-vimeo="${esc(r.vimeo)}" aria-label="Play: ${esc(r.title)}"></button>` : photoLayer(r);
   return `<figure class="tile${wide}" data-group="${esc(r.group)}"${thumb}>${pic}<div class="tile-scrim"></div>${vid}<figcaption>${r.label ? `<span class="t-date">${esc(r.label)}</span>` : ''}<span class="t-title">${esc(r.title)}</span>${r.credit ? `<span class="t-credit">Foto: ${esc(r.credit)}</span>` : ''}</figcaption></figure>`;
 }
 
@@ -201,9 +207,10 @@ const html = `<!doctype html>
   </div>
 </footer>
 
-<div class="modal" role="dialog" aria-modal="true" aria-label="Video player">
+<div class="modal" role="dialog" aria-modal="true" aria-label="Media viewer">
   <button class="modal-close" type="button" aria-label="Close video"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <div class="modal-frame"></div>
+  <p class="modal-caption"></p>
 </div>
 
 <script src="/main.js?v=${ver}" defer></script>
