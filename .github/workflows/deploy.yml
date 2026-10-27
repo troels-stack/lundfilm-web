@@ -48,8 +48,14 @@ jobs:
       - name: Upload to One.com (SFTP)
         if: ${{ !inputs.list_only }}
         run: |
-          if [ -z "$SFTP_HOST" ] || [ -z "$SFTP_USER" ] || [ -z "$SFTP_PASSWORD" ] || [ -z "$SFTP_PATH" ]; then
-            echo "::notice::SFTP secrets (SFTP_HOST, SFTP_USER, SFTP_PASSWORD, SFTP_PATH) are not all set — the site was built but not uploaded."
+          if [ -z "$SFTP_HOST" ] || [ -z "$SFTP_USER" ] || [ -z "$SFTP_PASSWORD" ]; then
+            echo "::notice::SFTP secrets are not set — the site was built but not uploaded."
             exit 0
           fi
-          lftp -u "$SFTP_USER,$SFTP_PASSWORD" "sftp://$SFTP_HOST" -e "set sftp:auto-confirm yes; set net:max-retries 3; mirror -R --verbose --parallel=4 dist/ $SFTP_PATH; quit"
+          TARGET="${SFTP_PATH:-webroots/www}"
+          lftp -u "$SFTP_USER,$SFTP_PASSWORD" "sftp://$SFTP_HOST" -e "set sftp:auto-confirm yes; set net:max-retries 3; mirror -R --verbose --parallel=4 dist/ $TARGET; quit" > upload.txt 2>&1
+          STATUS=$?
+          cat upload.txt
+          COUNT=$(grep -c "Transferring file" upload.txt || true)
+          echo "::notice title=Upload::Uploaded ${COUNT} files to ${TARGET} (exit ${STATUS})"
+          exit $STATUS
