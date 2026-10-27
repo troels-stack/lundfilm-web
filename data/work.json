@@ -20,21 +20,21 @@
     "credit": "Flemming Bo Jensen"
   },
   {
-    "title": "The Minds of 99 — Parken",
-    "role": "After movie · IMAG director · Filmed & edited by Mark Balstrup",
-    "year": "",
-    "vimeo": "1239794977"
-  },
-  {
     "title": "Emma Sehested Høeg — Arena",
     "role": "After movie · IMAG director · Filmed & edited by Mark Balstrup",
     "year": "2025",
     "vimeo": "1239794976"
   },
   {
+    "title": "The Minds of 99 — Parken",
+    "role": "After movie · IMAG director · Filmed & edited by Mark Balstrup",
+    "year": "JUN 2024",
+    "vimeo": "1239794977"
+  },
+  {
     "title": "The Weeknd — After Hours til Dawn",
     "role": "Video director · Europe, South America, Mexico",
-    "year": "",
+    "year": "2023",
     "image": "weeknd-stage.jpg",
     "alt": "Stage set shaped like an illuminated city skyline",
     "credit": "Troels Lund"
@@ -52,27 +52,27 @@
     "vimeo": "697905173"
   },
   {
-    "title": "Sport 2017 — Saveus",
-    "role": "Director · DR, live TV",
-    "year": "2017",
-    "vimeo": "288710159"
-  },
-  {
-    "title": "Kylie Minogue — Sport 2010",
-    "role": "Director · \"Get Outta My Way\" · DR, live TV",
-    "year": "2010",
-    "vimeo": "116910939"
-  },
-  {
     "title": "Eurovision Song Contest — Kyiv",
     "role": "Multi-camera director · Portugal's winning performance",
     "year": "2017",
     "vimeo": "312624280"
   },
   {
+    "title": "Sport 2017 — Saveus",
+    "role": "Director · DR, live TV",
+    "year": "2017",
+    "vimeo": "288710159"
+  },
+  {
     "title": "Eurovision Song Contest — Copenhagen",
     "role": "Multi-camera director · Austria's winning performance",
     "year": "2014",
     "vimeo": "521625900"
+  },
+  {
+    "title": "Kylie Minogue — Sport 2010",
+    "role": "Director · \"Get Outta My Way\" · DR, live TV",
+    "year": "2010",
+    "vimeo": "116910939"
   }
 ]
