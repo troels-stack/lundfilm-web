@@ -127,7 +127,7 @@ const html = `<!doctype html>
 
 <div class="wrap credits" aria-label="Selected credits">
   <span class="label">SELECTED CREDITS</span>
-  <span>THE WEEKND</span><span>THE MINDS OF 99</span><span>WIZKID</span><span>SCORPIONS</span><span>EUROVISION</span><span>X FACTOR</span><span>DR</span><span>TV 2</span><span>ROSKILDE FESTIVAL</span>
+  <span>THE WEEKND</span><span>THE MINDS OF 99</span><span>BENJAMIN HAV</span><span>WIZKID</span><span>SCORPIONS</span><span>EUROVISION SONG CONTEST</span><span>X FACTOR</span><span>DR</span><span>TV 2</span><span>ROSKILDE FESTIVAL</span>
 </div>
 
 <section class="wrap block" id="latest">
