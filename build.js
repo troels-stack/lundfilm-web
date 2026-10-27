@@ -193,7 +193,7 @@ const html = `<!doctype html>
     <h2>Let's make your show look as good as it sounds<em>.</em></h2>
     <div class="contact-row">
       <div class="contact-main">
-        <a class="email" data-u="contact" data-d="lundfilm.com" href="#contact">contact [at] lundfilm.com</a>
+        <a class="email" data-u="troels" data-d="lundfilm.com" href="#contact">troels [at] lundfilm.com</a>
         <a class="phone" href="tel:+4530573500">+45 30 57 35 00</a>
         <span style="color:var(--muted)">Hvidovre, Denmark</span>
       </div>
