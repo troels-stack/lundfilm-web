@@ -192,9 +192,8 @@ const html = `<!doctype html>
       </div>
       <nav class="socials" aria-label="Social media">
         <a href="https://www.instagram.com/lundfilm/" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/1475390659350889" rel="noopener">Facebook</a>
-        <a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a>
-        <a href="https://vimeo.com/" rel="noopener">Vimeo</a>
+        <a href="https://www.facebook.com/lundfilm" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/troels-lund-8b7385/" rel="noopener">LinkedIn</a>
       </nav>
     </div>
     <div class="fine"><span>© ${year} Lundfilm ApS</span><span>MUSIC NEVER LOOKED BETTER</span></div>
