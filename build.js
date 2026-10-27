@@ -80,6 +80,7 @@ const heroSlides = site.hero.map((h, i) =>
 
 const about = site.aboutImage;
 const year = new Date().getFullYear();
+const ver = Date.now().toString(36); // cache-busting: browsers fetch new CSS/JS after every deploy
 
 const html = `<!doctype html>
 <html lang="en">
@@ -95,7 +96,7 @@ const html = `<!doctype html>
 <meta name="theme-color" content="#0C0C0D">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=${ver}">
 </head>
 <body id="top">
 <header class="wrap site-header">
@@ -205,7 +206,7 @@ const html = `<!doctype html>
   <div class="modal-frame"></div>
 </div>
 
-<script src="/main.js" defer></script>
+<script src="/main.js?v=${ver}" defer></script>
 </body>
 </html>
 `;
