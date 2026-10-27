@@ -76,7 +76,7 @@
   function openVideo(id, title) {
     if (!modal) return;
     lastFocus = document.activeElement;
-    frame.innerHTML = '<iframe src="https://player.vimeo.com/video/' + encodeURIComponent(id) + '?autoplay=1&dnt=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="' + (title || 'Video').replace(/"/g, '&quot;') + '"></iframe>';
+    frame.innerHTML = '<iframe src="https://player.vimeo.com/video/' + encodeURIComponent(id) + '?autoplay=1&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="' + (title || 'Video').replace(/"/g, '&quot;') + '"></iframe>';
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
     closeBtn.focus();
