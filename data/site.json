@@ -1,0 +1,35 @@
+{
+  "latestCount": 4,
+  "hero": [
+    {
+      "image": "mo99-red.jpg",
+      "alt": "Arena in red light with big screens — The Minds of 99",
+      "credit": "The Minds of 99, Arena 2026 · Foto: Flemming Bo Jensen"
+    },
+    {
+      "image": "weeknd-stage.jpg",
+      "alt": "Stage set shaped like an illuminated skyline — The Weeknd",
+      "credit": "The Weeknd · Foto: Troels Lund"
+    },
+    {
+      "image": "mo99-cyan.jpg",
+      "alt": "Singer between lighting rigs — The Minds of 99",
+      "credit": "The Minds of 99, Arena 2026 · Foto: Flemming Bo Jensen"
+    }
+  ],
+  "aboutImage": {
+    "image": "mo99-arch.jpg",
+    "alt": "The Minds of 99 on floating platforms with a camera operator under a stage arch",
+    "credit": "Flemming Bo Jensen"
+  },
+  "usedElsewhere": [
+    "The Weeknd Stage - Troels Lund.jpg",
+    "MINDS-Arena2026-essay-FlemmingBoJensen-013.webp",
+    "MINDS-Arena2026-essay-header-FlemmingBoJensen-002.webp",
+    "TheMindsof99-Sommer 2026-Flemming Bo Jensen.webp",
+    "Scorpions 2026.jpg",
+    "Roskilde 2026.JPG",
+    "Scorpions.JPG",
+    "MINDS-Arena2026-essay-FlemmingBoJensen-009.webp"
+  ]
+}

@@ -1,0 +1,53 @@
+[
+  {
+    "file": "TheMindsof99-Sommer2026-FlemmingBoJensen-19.webp",
+    "group": "mo99",
+    "date": "2026-07-01",
+    "label": "SUMMER 2026",
+    "title": "The Minds of 99 — Rockbæk",
+    "image": "mo99-rockbaek.jpg",
+    "alt": "Green-lit stage with the band on floating platforms",
+    "credit": "Flemming Bo Jensen"
+  },
+  {
+    "file": "TheMindsof99-Sommer2026-FlemmingBoJensen-25.webp",
+    "group": "mo99",
+    "date": "2026-06-30",
+    "label": "SUMMER 2026",
+    "title": "The Minds of 99 — summer 2026",
+    "image": "mo99-bw.jpg",
+    "alt": "Black-and-white silhouettes of band and crowd in smoke",
+    "credit": "Flemming Bo Jensen"
+  },
+  {
+    "file": "Wizkid Madison Squar garden - Troels Lund.jpg",
+    "group": "tours",
+    "date": "2022-11-16",
+    "label": "NOV 2022",
+    "title": "WizKid — Madison Square Garden",
+    "image": "controlroom.jpg",
+    "alt": "Video control backstage at Madison Square Garden",
+    "credit": "Troels Lund",
+    "wide": true
+  },
+  {
+    "file": "The weeknd - Troels Lund.jpg",
+    "group": "tours",
+    "date": "2022-01-01",
+    "label": "",
+    "title": "The Weeknd — from the drum riser",
+    "image": "stadium-drums.jpg",
+    "alt": "View from the drum riser over a packed stadium",
+    "credit": "Troels Lund"
+  },
+  {
+    "file": "Workspace under stage - Troels Lund.jpg",
+    "group": "tours",
+    "date": "2022-01-01",
+    "label": "",
+    "title": "The Weeknd — workspace under stage",
+    "image": "videotent.jpg",
+    "alt": "Video workspace under the stage with switchers and racks",
+    "credit": "Troels Lund"
+  }
+]

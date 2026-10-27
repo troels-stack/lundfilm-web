@@ -1,0 +1,53 @@
+[
+  {
+    "id": "scorpions-china-2026",
+    "date": "2026-11-01",
+    "label": "NOV 2026",
+    "tag": "NEWS",
+    "title": "Scorpions in China",
+    "text": "IMAG director for Scorpions in China, following shows in Poland and Germany.",
+    "image": "scorpions-stage.jpg",
+    "alt": "Giant inflatable scorpion above the drum riser on the Scorpions stage",
+    "credit": "Troels Lund"
+  },
+  {
+    "id": "mo99-smukfest-2026",
+    "date": "2026-08-10",
+    "label": "AUG 2026",
+    "tag": "AFTER MOVIE",
+    "title": "The Minds of 99 — Smukfest",
+    "text": "The after movie from Smukfest is out. Filmed and edited by Mark Balstrup.",
+    "vimeo": "1239794804"
+  },
+  {
+    "id": "roskilde-2026",
+    "date": "2026-07-01",
+    "label": "SUMMER 2026",
+    "tag": "NEWS",
+    "title": "Concert director, Roskilde Festival",
+    "text": "Directing concerts at Roskilde Festival 2026.",
+    "image": "roskilde-2026.jpg",
+    "alt": "Crowd in the rain in front of a stage at Roskilde Festival at night",
+    "credit": "Troels Lund"
+  },
+  {
+    "id": "benjamin-hav-ringsted-2026",
+    "date": "2026-06-15",
+    "label": "JUN 2026",
+    "tag": "AFTER MOVIE",
+    "title": "Benjamin Hav — Ringsted",
+    "text": "The after movie from Ringsted is out. Filmed and edited by Mark Balstrup.",
+    "vimeo": "1239794975"
+  },
+  {
+    "id": "mo99-arena-2026",
+    "date": "2026-03-01",
+    "label": "2026",
+    "tag": "NEWS",
+    "title": "The Minds of 99 — Arena 2026",
+    "text": "Back in the arenas with The Minds of 99 as IMAG director.",
+    "image": "mo99-amber.jpg",
+    "alt": "The Minds of 99 in an arena with big screens in golden light",
+    "credit": "Flemming Bo Jensen"
+  }
+]
