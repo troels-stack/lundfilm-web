@@ -76,7 +76,7 @@ function tile(r) {
   return `<figure class="tile${wide}" data-group="${esc(r.group)}"${thumb}>${pic}<div class="tile-scrim"></div>${vid}<figcaption>${r.label ? `<span class="t-date">${esc(r.label)}</span>` : ''}<span class="t-title">${esc(r.title)}</span>${r.credit ? `<span class="t-credit">Foto: ${esc(r.credit)}</span>` : ''}</figcaption></figure>`;
 }
 
-const groupNames = { tours: 'Tours', mo99: 'The Minds of 99', news: 'News' };
+const groupNames = { tours: 'Tours', news: 'News' };
 const groups = ['all', ...Object.keys(groupNames).filter((g) => road.some((r) => r.group === g))];
 const filterButtons = groups.map((g, i) =>
   `<button class="filter" type="button" data-group="${g}" aria-pressed="${i === 0}">${g === 'all' ? 'All' : groupNames[g]}</button>`).join('');
