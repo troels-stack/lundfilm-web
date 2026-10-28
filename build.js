@@ -125,7 +125,7 @@ const html = `<!doctype html>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-hud" aria-hidden="true">
       <span class="hud-chip"><span class="dot"></span><span style="color:var(--text)">LIVE</span> <span data-cam>CAM 1</span> · PGM</span>
-      <span class="hud-chip tc" data-tc style="color:var(--text)">20:14:00:00</span>
+      <span class="hud-chip tc" data-tc style="color:var(--text)" title="Copenhagen time">--:--:--:--</span>
     </div>
     <h1>Music never<br>looked better<em>.</em></h1>
     <div class="hero-foot">

@@ -16,14 +16,20 @@
   if (slides.length > 1 && !reduce) {
     setInterval(function () { cur = (cur + 1) % slides.length; show(cur); }, 6000);
   }
+  // Time-of-day timecode in Copenhagen time, HH:MM:SS:FF at 25 fps (European broadcast)
   if (tc) {
-    var t0 = Date.now();
     var pad = function (n) { return String(n).padStart(2, '0'); };
-    setInterval(function () {
-      var ms = Date.now() - t0;
-      var s = 20 * 3600 + 14 * 60 + Math.floor(ms / 1000);
-      tc.textContent = pad(Math.floor(s / 3600) % 24) + ':' + pad(Math.floor(s / 60) % 60) + ':' + pad(s % 60) + ':' + pad(Math.floor((ms % 1000) / 40));
-    }, reduce ? 1000 : 40);
+    var cph = null;
+    try {
+      cph = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Copenhagen', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' });
+    } catch (e) { cph = null; }
+    var tick = function () {
+      var now = new Date();
+      var hms = cph ? cph.format(now) : pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+      tc.textContent = hms + ':' + pad(Math.floor(now.getMilliseconds() / 40));
+    };
+    tick();
+    setInterval(tick, reduce ? 1000 : 40);
   }
 
   // Mobile menu
