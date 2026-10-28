@@ -82,13 +82,14 @@
   }
   function openVideo(id, title) {
     if (!modal) return;
-    frame.classList.remove('photo');
+    frame.classList.remove('photo', 'pano');
     if (caption) caption.textContent = '';
     frame.innerHTML = '<iframe src="https://player.vimeo.com/video/' + encodeURIComponent(id) + '?autoplay=1&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="' + (title || 'Video').replace(/"/g, '&quot;') + '"></iframe>';
     openModal();
   }
   function openPhoto(src, text, alt) {
     if (!modal) return;
+    frame.classList.remove('pano');
     frame.classList.add('photo');
     frame.innerHTML = '';
     var im = new Image();
@@ -98,8 +99,61 @@
     if (caption) caption.textContent = text || '';
     openModal();
   }
+  // 360° photos: Pannellum (self-hosted in /vendor) is loaded only the first time someone opens one
+  var viewer = null;
+  var panoLib = null;
+  function loadPannellum() {
+    if (panoLib) return panoLib;
+    panoLib = new Promise(function (resolve, reject) {
+      var css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = '/vendor/pannellum/pannellum.css';
+      document.head.appendChild(css);
+      var s = document.createElement('script');
+      s.src = '/vendor/pannellum/pannellum.js';
+      s.onload = function () { resolve(window.pannellum); };
+      s.onerror = function () { panoLib = null; reject(); };
+      document.head.appendChild(s);
+    });
+    return panoLib;
+  }
+  function openPano(src, text) {
+    if (!modal) return;
+    frame.classList.remove('photo');
+    frame.classList.add('pano');
+    frame.innerHTML = '<div class="pano-stage"></div><p class="pano-hint" aria-hidden="true">Drag to look around</p>';
+    if (caption) caption.textContent = text || '';
+    openModal();
+    loadPannellum().then(function (p) {
+      if (!modal.classList.contains('open') || !frame.classList.contains('pano')) return;
+      var stage = frame.querySelector('.pano-stage');
+      var portrait = stage.clientWidth < stage.clientHeight;
+      viewer = p.viewer(stage, {
+        type: 'equirectangular',
+        panorama: src,
+        autoLoad: true,
+        autoRotate: reduce ? 0 : -2,
+        autoRotateInactivityDelay: 4000,
+        hfov: portrait ? 65 : 100,
+        minHfov: 30,
+        maxHfov: 120,
+        showControls: true,
+        showFullscreenCtrl: true,
+        mouseZoom: true,
+        draggable: true,
+        friction: 0.15,
+        crossOrigin: 'anonymous'
+      });
+      var hint = frame.querySelector('.pano-hint');
+      if (hint) viewer.on('mousedown', function () { hint.remove(); }).on('touchstart', function () { hint.remove(); });
+    }).catch(function () {
+      frame.innerHTML = '<span class="placeholder">The 360° viewer could not be loaded.</span>';
+    });
+  }
   function closeVideo() {
     if (!modal) return;
+    if (viewer) { try { viewer.destroy(); } catch (e) {} viewer = null; }
+    frame.classList.remove('pano');
     modal.classList.remove('open');
     frame.innerHTML = '';
     frame.classList.remove('photo');
@@ -115,6 +169,9 @@
       var pic = b.parentNode.querySelector('img');
       openPhoto(b.getAttribute('data-photo'), b.getAttribute('data-caption'), pic ? pic.alt : '');
     });
+  });
+  Array.prototype.slice.call(document.querySelectorAll('[data-pano]')).forEach(function (b) {
+    b.addEventListener('click', function () { openPano(b.getAttribute('data-pano'), b.getAttribute('data-caption')); });
   });
   if (closeBtn) closeBtn.addEventListener('click', closeVideo);
   if (modal) modal.addEventListener('click', function (e) { if (e.target === modal || e.target === frame) closeVideo(); });

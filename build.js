@@ -37,7 +37,12 @@ function videoLayer(item) {
   return `<button class="vimeo-trigger" type="button" data-vimeo="${esc(item.vimeo)}" aria-label="Play: ${esc(item.title)}"></button><span class="play" aria-hidden="true">${PLAY}</span>`;
 }
 
+const BADGE_360 = '<span class="badge-360" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="12" rx="10" ry="4"/><path d="M17 15.5l2 1.5-2.5 1"/></svg>360</span>';
+
 function photoLayer(item) {
+  if (item.pano && !item.vimeo) {
+    return `<button class="vimeo-trigger" type="button" data-pano="/pano/${encodeURIComponent(item.pano)}" data-caption="${esc(item.title)}" aria-label="Open 360° photo: ${esc(item.title)}"></button>${BADGE_360}`;
+  }
   if (!item.image || item.vimeo) return '';
   const cap = item.title + (item.credit ? ' · Foto: ' + item.credit : '');
   return `<button class="vimeo-trigger" type="button" data-photo="${img(item.image)}" data-caption="${esc(cap)}" aria-label="Open photo: ${esc(item.title)}"></button>`;
