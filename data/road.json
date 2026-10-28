@@ -1,5 +1,15 @@
 [
   {
+    "file": "Niels Brandt produktions øver 2026.jpg",
+    "group": "tours",
+    "date": "2026-01-01",
+    "label": "2026",
+    "title": "Niels Brandt production — in rehearsal",
+    "image": "niels-brandt-rehearsal.jpg",
+    "alt": "Singer-guitarist alone in a spotlight on a dark stage, with his close-up on a large screen behind",
+    "credit": "Troels Lund"
+  },
+  {
     "file": "TheMindsof99-Sommer2026-FlemmingBoJensen-19.webp",
     "group": "mo99",
     "date": "2026-07-01",
@@ -31,20 +41,20 @@
     "wide": true
   },
   {
-    "file": "The weeknd - Troels Lund.jpg",
+    "file": "The weeknd okt 2023 - Troels Lund.jpg",
     "group": "tours",
-    "date": "2023-01-01",
-    "label": "2023",
+    "date": "2023-10-01",
+    "label": "OCT 2023",
     "title": "The Weeknd — from the drum riser",
     "image": "stadium-drums.jpg",
     "alt": "View from the drum riser over a packed stadium",
     "credit": "Troels Lund"
   },
   {
-    "file": "Workspace under stage - Troels Lund.jpg",
+    "file": "Workspace under stage okt 2023 - Troels Lund.jpg",
     "group": "tours",
-    "date": "2023-01-01",
-    "label": "2023",
+    "date": "2023-10-01",
+    "label": "OCT 2023",
     "title": "The Weeknd — workspace under stage",
     "image": "videotent.jpg",
     "alt": "Video workspace under the stage with switchers and racks",
