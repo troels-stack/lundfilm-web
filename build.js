@@ -37,7 +37,7 @@ function videoLayer(item) {
   return `<button class="vimeo-trigger" type="button" data-vimeo="${esc(item.vimeo)}" aria-label="Play: ${esc(item.title)}"></button><span class="play" aria-hidden="true">${PLAY}</span>`;
 }
 
-const BADGE_360 = '<span class="badge-360" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="12" rx="10" ry="4"/><path d="M17 15.5l2 1.5-2.5 1"/></svg>360</span>';
+const BADGE_360 = '<span class="mark-360" aria-hidden="true"><span class="mark-ring"><svg class="mark-orbit" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><ellipse class="track" cx="50" cy="50" rx="46" ry="16" pathLength="100"/><ellipse class="comet" cx="50" cy="50" rx="46" ry="16" pathLength="100"/></svg><b>360°</b></span><span class="mark-hint">Look around</span></span>';
 
 function photoLayer(item) {
   if (item.pano && !item.vimeo) {
@@ -78,7 +78,7 @@ function tile(r) {
   if (r.image) pic = `<img src="${img(r.image)}" alt="${esc(r.alt)}" loading="lazy">`;
   const thumb = !r.image && r.vimeo ? ` data-vimeo-thumb="${esc(r.vimeo)}"` : '';
   const vid = r.vimeo ? `<button class="vimeo-trigger" type="button" data-vimeo="${esc(r.vimeo)}" aria-label="Play: ${esc(r.title)}"></button>` : photoLayer(r);
-  return `<figure class="tile${wide}" data-group="${esc(r.group)}"${thumb}>${pic}<div class="tile-scrim"></div>${vid}<figcaption>${r.label ? `<span class="t-date">${esc(r.label)}</span>` : ''}<span class="t-title">${esc(r.title)}</span>${r.credit ? `<span class="t-credit">Foto: ${esc(r.credit)}</span>` : ''}</figcaption></figure>`;
+  return `<figure class="tile${wide}${r.pano ? ' is-pano' : ''}" data-group="${esc(r.group)}"${thumb}>${pic}<div class="tile-scrim"></div>${vid}<figcaption>${r.label ? `<span class="t-date">${esc(r.label)}</span>` : ''}<span class="t-title">${esc(r.title)}</span>${r.credit ? `<span class="t-credit">Foto: ${esc(r.credit)}</span>` : ''}</figcaption></figure>`;
 }
 
 const groupNames = { tours: 'Tours', news: 'News' };
