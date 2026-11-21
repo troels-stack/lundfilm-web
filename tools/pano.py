@@ -4,7 +4,7 @@
     python3 tools/pano.py <source image> <slug>
 
 Writes:
-  public/pano/<slug>.jpg    web version of the panorama (max 6000x3000, q82) for the 360 viewer
+  public/pano/<slug>.jpg    web version of the panorama (max 8192x4096, q92, 4:4:4) for the 360 viewer
   public/images/<slug>.jpg  flat 3:2 thumbnail for the tile (a normal-looking view, not the stretched 2:1 image)
 
 Prints JSON with the detected size so the caller can fill in data/road.json.
@@ -19,7 +19,7 @@ import numpy as np
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
-PANO_MAX_W = 6000
+PANO_MAX_W = 8192  # Pannellum splits up to 2x the WebGL texture limit; 8192 works on phones with a 4096 limit
 THUMB_W, THUMB_H = 1800, 1200
 THUMB_HFOV = 100  # degrees
 
@@ -71,7 +71,7 @@ def main():
         pano_out = ROOT / 'public' / 'pano' / f'{slug}.jpg'
         thumb_out = ROOT / 'public' / 'images' / f'{slug}.jpg'
         pano_out.parent.mkdir(parents=True, exist_ok=True)
-        im.save(pano_out, 'JPEG', quality=82, progressive=True, optimize=True)
+        im.save(pano_out, 'JPEG', quality=92, subsampling=0, progressive=True, optimize=True)
         thumb = rectilinear(im, THUMB_W, THUMB_H, THUMB_HFOV)
         thumb.save(thumb_out, 'JPEG', quality=82, progressive=True, optimize=True)
     print(json.dumps({
